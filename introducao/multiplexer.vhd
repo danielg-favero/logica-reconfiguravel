@@ -1,3 +1,6 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
 entity multiplexer is
 port (
     i0, i1, i2, i3, a0, a1: in std_logic;
