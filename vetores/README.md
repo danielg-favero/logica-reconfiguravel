@@ -1,6 +1,6 @@
 # Vetores
 
-é o tipo de dado denominado `std_logic_vector`
+é o tipo de dado denominado `std_logic_vector`. É ideal para ser usado com estruturas que estão organizadas em agrupamentos.
 
 ## Exemplo 1
 
@@ -101,6 +101,22 @@ a20 <= (others => '0');
 -- a < b: menor que
 -- a <= b: menor ou igual a
 ```
+
+# Tipos Signed e Unsigned
+
+Tem a mesma "aparência" que um vetor do tipo *std_logic_vector*, porém admitem operações aritméticas, sendo *signed* **com sinal** e *unsigned* **sem sinal**. Portanto, **podemos somar dois vetores signed ou unsigned**
+
+## Função *to_unsigned*
+
+Transforma um inteiro em um vetor *unsigned*. O inteiro declarado no primeiro argumento será convertido em um vetor unsigned com um número de bits igual ao segundo argumento.
+
+```vhdl
+    to_unsigned(int, numbits)
+```
+
+## Função *std_logic_vector*
+
+Transforma um vetor unsigned ou signed em um vetor *std_logic_vector*.
 
 ## Exemplo 3
 
