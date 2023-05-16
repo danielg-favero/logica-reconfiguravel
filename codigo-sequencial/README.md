@@ -102,3 +102,73 @@ while i < M loop
     ...
 end loop;
 ```
+
+# Functions
+
+São pedaços de códigos sequenciais que retorna um objeto de vários tipos.
+
+Exemplo 1:
+```vhdl
+entity func_max is
+    port(
+        a, b, c: in integer range 0 to 4;
+        y: out integer range 0 to 4    
+    );
+end entity;
+
+architecture arq of func_max is
+    function max(in1, in2, in3: integer) return integer is
+    begin
+        if(in1 >= in2 and in1 >= in3) then
+            return in1;
+        elsif (in2 >= in1 and in2 >= in3) then
+            return in2;
+        else 
+            return in3;
+        end if;
+    end function;
+begin
+    y <= max(a, b, c)
+end architecture;
+```
+
+# Procedures
+
+São pedaços de códigos sequenciais que retorna um objeto de algum tipo.
+
+```vhdl
+package meu_pacote is
+    procedure min_max(signal a, b, c: in integer range 0 to 4;
+                      signal min, max: out integer range 0 to 4);
+end package;
+
+package body meu_pacote is
+    procedure min_max(signal a, b, c: in integer range 0 to 4;
+                      signal min, max: out integer range 0 to 4) is
+    begin
+        if (a >= b) then
+            if(a >= c) then max <= a;
+                if (b >= c) then min <= c;
+                    else min <= b;
+                end if
+                else
+                    max <= c;
+                    min <= b;
+            end if;
+        else 
+            if(b >= c) then max <= b;
+                if (a >= c) then min <= c;
+                    else min <= a;
+                end if;
+                else
+                    max <= c;
+                    min <= a;
+            end if;
+        end if;
+    end procedure;
+end package body;
+```
+
+# Osciladores
+
+Os kits de desenvolvimento (DE10-Lite) possuem 4 osciladores, dois de 50MHz e outros dois de uso mais específico. Os clocks de 50 MHz se conectam nas entradas *PIN_P11* e *PIN_N14*.
